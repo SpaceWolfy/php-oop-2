@@ -1,6 +1,6 @@
 <?php
 
-require_once './creditcard.php';
+include_once  __DIR__ . '/creditcard.php';
 
 class Buyer
 {
@@ -9,7 +9,7 @@ class Buyer
   protected string $email;
   protected string $shippingAddress;
   protected $creditCard;
-  protected $cart = [];
+  protected array $cart = [];
   protected int $cartPrice;
   protected int $cartPriceDiscount;
   protected int $totalPrice;
@@ -81,16 +81,6 @@ class Buyer
   /* ------- */
 
   /* CreditCard */
-  public function setExpirationDate($expirationDate)
-  {
-    $date_now = date("Y-m-d");
-    if ($date_now > $expirationDate) {
-      return 'carta di credito scaduta';
-    } else {
-      $this->expirationDate = $expirationDate;
-    }
-  }
-
   public function addCreditCard()
   {
     return new CreditCard(4382356189895476, 899, 'Gino Pino', '2023-10-21');
@@ -110,6 +100,3 @@ class Buyer
   }
   /* ------ */
 }
-
-$user = new Buyer();
-var_dump($user);
