@@ -81,9 +81,19 @@ class Buyer
   /* ------- */
 
   /* CreditCard */
-  function addCreditCard()
+  public function setExpirationDate($expirationDate)
   {
-    return new CreditCard(4382356189895476, 899, 'Gino Pino', date("Y-m-d", strtotime("2022/10/4")));
+    $date_now = date("Y-m-d");
+    if ($date_now > $expirationDate) {
+      return 'carta di credito scaduta';
+    } else {
+      $this->expirationDate = $expirationDate;
+    }
+  }
+
+  public function addCreditCard()
+  {
+    return new CreditCard(4382356189895476, 899, 'Gino Pino', '2023-10-21');
   }
   /* ---------- */
 
